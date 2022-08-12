@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Solution {
+class Solution1 {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         queue<int> q1;
@@ -21,4 +21,16 @@ public:
             q1.pop();
         }
     }
+};
+
+class Solution2 {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int pos = m-- + n-- - 1;
+        while (m >= 0 && n >= 0) {
+            nums1[pos--] = nums1[m] >= nums2[n]? nums1[m--]: nums2[n--];
+        }
+        while (n >= 0) {
+            nums1[pos--] = nums2[n--];
+        }
 };
