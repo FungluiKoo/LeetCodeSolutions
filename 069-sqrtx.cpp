@@ -1,6 +1,6 @@
 using namespace std;
 
-class Solution {
+class Solution1 {
 public:
     int mySqrt(int x) {
         if(x<=1){return x;}
@@ -12,5 +12,16 @@ public:
             else{left = middle;}
         }
         return left;
+    }
+};
+
+class Solution2 {
+public:
+    int mySqrt(int x) {
+        unsigned long long s = x;
+        while(s*s>(unsigned long long)x){
+            s = (s + x/s)/2;
+        }
+        return s;
     }
 };
