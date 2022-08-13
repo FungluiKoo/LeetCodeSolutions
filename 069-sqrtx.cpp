@@ -1,6 +1,6 @@
 using namespace std;
 
-class Solution1 {
+class Solution1 { // binary
 public:
     int mySqrt(int x) {
         if(x<=1){return x;}
@@ -15,7 +15,7 @@ public:
     }
 };
 
-class Solution2 {
+class Solution2 { // Newton's
 public:
     int mySqrt(int x) {
         unsigned long long s = x;
