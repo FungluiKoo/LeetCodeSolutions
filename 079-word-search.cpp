@@ -5,17 +5,29 @@
 using namespace std;
 
 class Solution {
+private:
     int r;
     int c;
     vector<vector<char>> *board;
     vector<vector<bool>> visited;
     string word;
-public:
-    bool helper(int x0, int y0){
-        stack<pair<int,int>> S;
-        
+
+    bool helper(int x, int y, int level){
+        if(level==word.length()){return true;}
+        visited[x][y] = true;
+        vector<pair<int,int>> neighbors = {{x-1,y}, {x,y-1}, {x,y+1}, {x+1,y}};
+        for(auto [i,j]:neighbors){
+            if(i>=0 && i<r && j>=0 && j<c && !visited[i][j] \
+            && (*board)[i][j]==word[level] && helper(i,j,level+1)){
+                return true;
+            }
+        }
+        visited[x][y] = false;
+        return false;
     }
+public:
     bool exist(vector<vector<char>>& board, string word) {
+        if(word.length()==0){return true;}
         this->r = board.size();
         this->c = board[0].size();
         this->board = &board;
@@ -23,9 +35,14 @@ public:
         this->word = word;
         for(int i=0; i<r; ++i){
             for(int j=0; j<c; ++j){
-                if(helper(i,j)){return true;}
+                if(board[i][j]==word[0] && helper(i,j,1)){return true;}
             }
         }
         return false;
     }
 };
+
+int main(){
+    Solution sol;
+    return 0;
+}
