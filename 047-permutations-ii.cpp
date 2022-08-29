@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <unordered_set>
 #include <vector>
 
@@ -44,6 +45,18 @@ public:
             result.push_back(v);
         }
         return result;
+    }
+};
+
+class Solution2 { // Using 031 Next Permutation
+public:
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> sols;
+        do{
+            sols.push_back(nums);
+        }while(next_permutation(nums.begin(),nums.end()));
+        return sols;
     }
 };
 
