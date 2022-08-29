@@ -5,6 +5,7 @@ using namespace std;
 
 class Solution { // O(n)
 public:
+    // next_permutation(nums.begin(),nums.end());
     void nextPermutation(vector<int>& nums) {
         int n = nums.size();
         int i=n-2;
