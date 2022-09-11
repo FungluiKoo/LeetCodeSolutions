@@ -1,5 +1,6 @@
 #include <stack>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -33,6 +34,18 @@ public:
         this->board = &board;
         this->visited.resize(r, vector<bool>(c,false));
         this->word = word;
+
+        // precheck
+        unordered_map<char,int> cnt;
+        for(int i=0; i<r; ++i){
+            for(int j=0; j<c; ++j){
+                ++cnt[board[i][j]];
+            }
+        }
+        for(auto &ch:word){
+            if(--cnt[ch]<0){return false;}
+        }
+
         for(int i=0; i<r; ++i){
             for(int j=0; j<c; ++j){
                 if(board[i][j]==word[0] && helper(i,j,1)){return true;}
