@@ -1,11 +1,11 @@
 #include <algorithm>
-#include <map>
+#include <unordered_map>
 #include <vector>
 
 class Solution {
 public:
     std::vector<int> twoSum(std::vector<int>& nums, int target) {
-        std::map<int, std::vector<int>> spectrum;
+        std::unordered_map<int, std::vector<int>> spectrum;
         for(int i=0; i<nums.size(); i++){
             spectrum[nums[i]].push_back(i);
         }
