@@ -14,7 +14,7 @@ public:
         for(; i<=sq; i+=2){
             if(isPrime[i]){
                 ++cnt;
-                for(int x=i*3; x<n; x+=(i<<1)){
+                for(int x=i*i; x<n; x+=(i<<1)){
                     isPrime[x] = false;
                 }
             }
