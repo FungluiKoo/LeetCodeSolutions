@@ -8,14 +8,11 @@ class Solution {
 public:
     int getk(vector<int>& nums1, vector<int>& nums2, int k){
         int n1 = nums1.size(), n2=nums2.size();
-        if(n1==0){return nums2[k-1];}
-        if(n2==0){return nums1[k-1];}
-     
-        if(upper_bound(nums1.cbegin(),nums1.cend(),nums2[0])-nums1.cbegin()>=k){return nums1[k-1];}
-        if(lower_bound(nums2.cbegin(),nums2.cend(),nums1[n1-1])-nums2.cbegin()<=k-n1){return max(nums1[n1-1],nums2[k-n1-1]);}
-
-        if(upper_bound(nums2.cbegin(),nums2.cend(),nums1[0])-nums2.cbegin()>=k){return nums2[k-1];}
-        if(lower_bound(nums1.cbegin(),nums1.cend(),nums2[n2-1])-nums1.cbegin()<=k-n2){return max(nums2[n2-1],nums1[k-n2-1]);}
+        if(n1==0 || (n2>=k && nums1[0]>=nums2[k-1])){return nums2[k-1];}
+        if(n2==0 || (n1>=k && nums2[0]>=nums1[k-1])){return nums1[k-1];}
+        
+        if(n1+n2==k || (k>n1 && nums1[n1-1]<=nums2[k-n1])){return max(nums1[n1-1],nums2[k-n1-1]);}
+        if(n1+n2==k || (k>n2 && nums2[n2-1]<=nums1[k-n2])){return max(nums2[n2-1],nums1[k-n2-1]);}
         
         // now the answer must be in the overlapped part
         int left=max(1,k-n2+1), right=min(k,n1);
