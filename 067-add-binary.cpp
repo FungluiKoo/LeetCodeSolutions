@@ -3,7 +3,16 @@
 
 using namespace std;
 
-class Solution {
+class Solution1 { // Not working since a,b are very long
+public:
+    string addBinary(string a, string b) {
+        int x = stoi(a, 0, 2);
+        int y = stoi(b, 0, 2);
+        
+    }
+};
+
+class Solution2 {
 public:
     string addBinary(string a, string b) {
         if(b.length()>a.length()){swap(a,b);}
