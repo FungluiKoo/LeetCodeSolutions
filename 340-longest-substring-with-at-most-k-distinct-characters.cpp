@@ -1,5 +1,4 @@
 #include <bitset>
-#include <iostream>
 #include <string>
 #include <vector>
 
@@ -22,3 +21,4 @@ public:
         }
         return result;
     }
+};
