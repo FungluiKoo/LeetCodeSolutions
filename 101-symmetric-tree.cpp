@@ -11,6 +11,19 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+class Solution0 {
+private:
+    bool helper(TreeNode *left, TreeNode *right){
+        if(left==nullptr && right==nullptr){return true;}
+        if(left==nullptr || right==nullptr || left->val!=right->val){return false;}
+        return helper(left->left, right->right) && helper(left->right, right->left);
+    }
+public:
+    bool isSymmetric(TreeNode* root) {
+        return root==nullptr || helper(root->left, root->right);
+    }
+};
+
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
