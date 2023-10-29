@@ -9,7 +9,6 @@ public:
             if(tx>ty){tx%=ty;}
             else{ty%=tx;}
         }
-        if(tx<sx || ty<sy){return false;}
-        return (tx-sx)%ty==0 && (ty-sy)%tx==0;
+        return tx>=sx && ty>=sy && (tx-sx)%ty==0 && (ty-sy)%tx==0;
     }
 };
